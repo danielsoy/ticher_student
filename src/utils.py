@@ -6,7 +6,9 @@ def load_model(model, model_path):
     model_name = model_path.split('/')[-1]
     try:
         print(f'Loading of {model_name} succesful.')
-        model.load_state_dict(torch.load(model_path))
+        # Add map_location parameter to handle CPU-only environments
+        map_location = torch.device('cpu') if not torch.cuda.is_available() else None
+        model.load_state_dict(torch.load(model_path, map_location=map_location))
     except FileNotFoundError as e:
         print(e)
         print('No model available.')
