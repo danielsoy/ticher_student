@@ -80,7 +80,7 @@ def train(args):
                            weight_decay=args.weight_decay)
 
     # Load training data
-    dataset = AnomalyDataset(root_dir=f'../data/{args.dataset}',
+    dataset = AnomalyDataset(root_dir=f'/content/drive/MyDrive/data/{args.dataset}',
                              transform=transforms.Compose([
                                 transforms.Resize((args.image_size, args.image_size)),
                                 transforms.RandomCrop((args.patch_size, args.patch_size)),
