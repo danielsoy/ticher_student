@@ -71,7 +71,7 @@ def train(args):
     teacher.to(device)
 
     # Loading saved model
-    model_name = f'/content/drive/MyDrive/data/ticher student models/{args.dataset}/teacher_{args.patch_size}_net.pt'    
+    model_name = f'/content/drive/MyDrive/ticher student models/{args.dataset}/teacher_{args.patch_size}_net.pt'    
     
     load_model(teacher, model_name)
 
