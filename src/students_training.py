@@ -59,7 +59,7 @@ def train(args):
 
     # Loading students models
     for i in range(args.n_students):
-        model_name = f'../model/{args.dataset}/student_{args.patch_size}_net_{i}.pt'
+        model_name = f'/content/drive/MyDrive/data/{args.dataset}/student_{args.patch_size}_net_{i}.pt'
         load_model(students[i], model_name)
 
     # Define optimizer
@@ -68,7 +68,7 @@ def train(args):
                             weight_decay=args.weight_decay) for student in students]
 
     # Load anomaly-free training data
-    dataset = AnomalyDataset(root_dir=f'../data/{args.dataset}',
+    dataset = AnomalyDataset(root_dir=f'/content/drive/MyDrive/data/{args.dataset}',
                              transform=transforms.Compose([
                                 transforms.Resize((args.image_size, args.image_size)),
                                 transforms.RandomHorizontalFlip(),
@@ -104,7 +104,7 @@ def train(args):
 
     for j, student in enumerate(students):
         min_running_loss = np.inf
-        model_name = f'../model/{args.dataset}/student_{args.patch_size}_net_{j}.pt'
+        model_name = f'/content/drive/MyDrive/data/{args.dataset}/student_{args.patch_size}_net_{j}.pt'
         print(f'Training Student {j} on anomaly-free dataset ...')
 
         for epoch in range(args.max_epochs):
